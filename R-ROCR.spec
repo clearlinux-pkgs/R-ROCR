@@ -4,7 +4,7 @@
 #
 Name     : R-ROCR
 Version  : 1.0.7
-Release  : 4
+Release  : 5
 URL      : https://cran.r-project.org/src/contrib/ROCR_1.0-7.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/ROCR_1.0-7.tar.gz
 Summary  : Visualizing the Performance of Scoring Classifiers
