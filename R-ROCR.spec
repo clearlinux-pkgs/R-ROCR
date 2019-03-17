@@ -4,32 +4,28 @@
 #
 Name     : R-ROCR
 Version  : 1.0.7
-Release  : 13
+Release  : 14
 URL      : https://cran.r-project.org/src/contrib/ROCR_1.0-7.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/ROCR_1.0-7.tar.gz
 Summary  : Visualizing the Performance of Scoring Classifiers
 Group    : Development/Tools
 License  : GPL-2.0+
+Requires: R-caTools
+Requires: R-gdata
 Requires: R-gplots
+Requires: R-gtools
+BuildRequires : R-caTools
+BuildRequires : R-gdata
 BuildRequires : R-gplots
-BuildRequires : clr-R-helpers
+BuildRequires : R-gtools
+BuildRequires : buildreq-R
 
 %description
-and precision/recall plots are popular examples of trade-off
-  visualizations for specific pairs of performance measures. ROCR is a
-  flexible tool for creating cutoff-parameterized 2D performance curves
-  by freely combining two from over 25 performance measures (new
-  performance measures can be added using a standard interface).
-  Curves from different cross-validation or bootstrapping runs can be
-  averaged by different methods, and standard deviations, standard
-  errors or box plots can be used to visualize the variability across
-  the runs. The parameterization can be visualized by printing cutoff
-  values at the corresponding curve positions, or by coloring the
-  curve according to cutoff. All components of a performance plot can
-  be quickly adjusted using a flexible parameter dispatching
-  mechanism. Despite its flexibility, ROCR is easy to use, with only
-  three commands and reasonable default values for all optional
-  parameters.
+Please support our work by citing the ROCR article in your publications:
+------------------------------------------------------------------------
+Sing T, Sander O, Beerenwinkel N, Lengauer T. [2005]
+ROCR: visualizing classifier performance in R.
+Bioinformatics 21(20):3940-1.
 
 %prep
 %setup -q -c -n ROCR
@@ -39,11 +35,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1521242416
+export SOURCE_DATE_EPOCH=1552845746
 
 %install
+export SOURCE_DATE_EPOCH=1552845746
 rm -rf %{buildroot}
-export SOURCE_DATE_EPOCH=1521242416
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -78,8 +74,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library ROCR|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  ROCR || :
 
 
 %files
